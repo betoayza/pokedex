@@ -27,7 +27,10 @@ export const Pokedex = () => {
     };
 
     await axios
-      .request(`https://pokeapi.co/api/v2/pokemon/${form}`, options)
+      .request(
+        `https://pokeapi.co/api/v2/pokemon/${form.toLowerCase()}`,
+        options
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data) {
@@ -71,7 +74,7 @@ export const Pokedex = () => {
   ) : (
     <div className={"w-auto"} style={{ display: "grid", placeItems: "center" }}>
       <div
-        className="card p-1"
+        className="card p-1 border border-dark border-2"
         id={"pokedex"}
         style={{ width: "auto", height: "auto" }}
       >
@@ -88,8 +91,12 @@ export const Pokedex = () => {
           <img
             src={imageUser}
             className="card-img-top img-fluid border border-dark border-2 rounded"
-            alt="Set your photo"
-            style={{ maxHeight: "200px", maxWidth: "200px" }}
+            alt="SET YOUR PHOTO"
+            style={{
+              maxHeight: "200px",
+              maxWidth: "200px",
+              fontWeight: "bold",
+            }}
           />
         </div>
 
@@ -125,8 +132,14 @@ export const Pokedex = () => {
               onChange={handleChange}
               className={"form-control border border-dark border-2"}
               placeholder={"Search..."}
-              style={{ fontFamily: "monospace" }}
+              style={{
+                fontFamily: "monospace",
+                backgroundColor: "black",
+                color: "white",
+                textTransform: "uppercase",
+              }}
               value={form}
+              required
             />
             <button
               type="submit"
