@@ -72,14 +72,16 @@ export const Pokedex = () => {
   return modal ? (
     <Modal></Modal>
   ) : (
-    <div className={"w-auto"} style={{ display: "grid", placeItems: "center" }}>
+    <div className={"w-auto h-auto"} style={{ display: "grid", placeItems: "center" }}>
       <div
         className="card p-1 border border-dark border-2"
         id={"pokedex"}
         style={{ width: "auto", height: "auto" }}
       >
         <div
-          className={"h-auto p-3 border border-dark border-2 rounded text-center"}
+          className={
+            "h-auto p-3 border border-dark border-2 rounded text-center"
+          }
           style={{
             width: "100%",
             height: "auto",
@@ -137,7 +139,7 @@ export const Pokedex = () => {
 
         <div className="" style={{ display: "grid", placeItems: "center" }}>
           <button className={"btn"}>
-            <i class="bi-circle-fill"></i>
+            <i className="bi-circle-fill"></i>
           </button>
           <form
             onSubmit={handleSubmit}
@@ -168,7 +170,7 @@ export const Pokedex = () => {
           <p className="card-text">{""}</p>
 
           <button
-            className={"btn btn-light border border-dark border-1"}
+            className={"btn btn-light border border-dark border-2 mb-2"}
             style={{
               fontFamily: "monospace",
               fontSize: "10px",
