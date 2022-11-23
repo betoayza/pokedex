@@ -35,7 +35,7 @@ export const Pokemon = ({ pokemon }) => {
           //console.log(index);
           if (index < 3) return `\n${index + 1}) ${move.move.name}\n`;
         })}`}
-        rate={1}
+        rate={1.2}
         pitch={0.5}
         voice={selector}
         // "en-US"

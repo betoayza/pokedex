@@ -79,7 +79,7 @@ export const Pokedex = () => {
         style={{ width: "auto", height: "auto" }}
       >
         <div
-          className={"h-auto p-3 border border-dark border-2 rounded"}
+          className={"h-auto p-3 border border-dark border-2 rounded text-center"}
           style={{
             width: "100%",
             height: "auto",
@@ -111,18 +111,34 @@ export const Pokedex = () => {
             onChange={(e) => handleChangeUserImage(e)}
             hidden
           />
+
+          <button className={"btn"}>
+            <i
+              className="bi-aspect-ratio-fill"
+              style={{ fontSize: "20px" }}
+            ></i>
+          </button>
+
           <button
             className={"btn btn-dark"}
             onClick={() => refUserImage.current.click()}
+            style={{ fontFamily: "monospace" }}
           >
             Upload
           </button>
+
+          <button className={"btn"}>
+            <i
+              className="bi-aspect-ratio-fill"
+              style={{ fontSize: "20px" }}
+            ></i>
+          </button>
         </div>
 
-        <div className="card-body">
-          <h5 className="card-title">{""}</h5>
-        </div>
-        <div className="card-body">
+        <div className="" style={{ display: "grid", placeItems: "center" }}>
+          <button className={"btn"}>
+            <i class="bi-circle-fill"></i>
+          </button>
           <form
             onSubmit={handleSubmit}
             style={{ display: "grid", placeItems: "center" }}
@@ -144,17 +160,23 @@ export const Pokedex = () => {
             <button
               type="submit"
               className={"btn btn-primary mt-2 border border-dark border-2"}
+              style={{ fontFamily: "monospace" }}
             >
               Go!
             </button>
           </form>
           <p className="card-text">{""}</p>
-          <a href="#" className="card-link">
+
+          <button
+            className={"btn btn-light border border-dark border-1"}
+            style={{
+              fontFamily: "monospace",
+              fontSize: "10px",
+              fontWeight: "bold",
+            }}
+          >
             My Profile
-          </a>
-          <a href="#" className="card-link">
-            Another link
-          </a>
+          </button>
         </div>
 
         {found && (
