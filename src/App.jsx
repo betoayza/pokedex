@@ -6,7 +6,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App h-auto">
+    <div className="App h-auto w-auto">
       <Pokedex />
     </div>
   );

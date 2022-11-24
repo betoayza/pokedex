@@ -72,7 +72,10 @@ export const Pokedex = () => {
   return modal ? (
     <Modal></Modal>
   ) : (
-    <div className={"w-auto h-auto"} style={{ display: "grid", placeItems: "center" }}>
+    <div
+      className={"border"}
+      style={{ display: "grid", placeItems: "center", minHeight: "100vh" }}
+    >
       <div
         className="card p-1 border border-dark border-2"
         id={"pokedex"}
