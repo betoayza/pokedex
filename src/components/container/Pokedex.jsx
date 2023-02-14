@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
-import { Modal } from "./Modal";
+import { Modal } from "../pure/Modal";
 import axios from "axios";
-import { Pokemon } from "./Pokemon";
+import { Pokemon } from "../pure/Pokemon";
+import audioPressBoton from "../../audio/apretar-boton.mp3";
+import audioPokemonFound from "../../audio/found-pokemon.mp3";
 
 export const Pokedex = () => {
   const [pokemon, setPokemon] = useState("");
@@ -9,6 +11,7 @@ export const Pokedex = () => {
   const [imageUser, setImageUser] = useState(null);
   const [found, setFound] = useState(false);
   const [form, setForm] = useState("");
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   let refUserImage = useRef(null);
 
@@ -34,7 +37,9 @@ export const Pokedex = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data) {
+          const audioFound = new Audio(audioPokemonFound);
           setFound(true);
+          audioFound.play();
           setPokemon(res.data);
         }
       })
@@ -67,7 +72,11 @@ export const Pokedex = () => {
     setForm("");
   };
 
-  const handleClose = () => {};
+  const handleClick = () => {
+    const audio = new Audio(audioPressBoton);
+    audio.play();
+    // audio.pause()
+  };
 
   return modal ? (
     <Modal></Modal>
@@ -77,7 +86,7 @@ export const Pokedex = () => {
       style={{ display: "grid", placeItems: "center", minHeight: "100vh" }}
     >
       <div
-        className="card p-1 border border-dark border-2"
+        className="card p-1 border border-dark border-5"
         id={"pokedex"}
         style={{ width: "auto", height: "auto" }}
       >
@@ -121,12 +130,16 @@ export const Pokedex = () => {
             <i
               className="bi-aspect-ratio-fill"
               style={{ fontSize: "20px" }}
+              onClick={handleClick}
             ></i>
           </button>
 
           <button
             className={"btn btn-dark"}
-            onClick={() => refUserImage.current.click()}
+            onClick={() => {
+              refUserImage.current.click();
+              handleClick();
+            }}
             style={{ fontFamily: "monospace" }}
           >
             Upload
@@ -136,12 +149,13 @@ export const Pokedex = () => {
             <i
               className="bi-aspect-ratio-fill"
               style={{ fontSize: "20px" }}
+              onClick={handleClick}
             ></i>
           </button>
         </div>
 
         <div className="" style={{ display: "grid", placeItems: "center" }}>
-          <button className={"btn"}>
+          <button className={"btn"} onClick={handleClick}>
             <i className="bi-circle-fill"></i>
           </button>
           <form
@@ -166,6 +180,7 @@ export const Pokedex = () => {
               type="submit"
               className={"btn btn-primary mt-2 border border-dark border-2"}
               style={{ fontFamily: "monospace" }}
+              onClick={handleClick}
             >
               Go!
             </button>
@@ -179,6 +194,7 @@ export const Pokedex = () => {
               fontSize: "10px",
               fontWeight: "bold",
             }}
+            onClick={handleClick}
           >
             My Profile
           </button>
@@ -195,7 +211,11 @@ export const Pokedex = () => {
               placeItems: "center",
             }}
           >
-            <Pokemon pokemon={pokemon} />
+            <Pokemon
+              pokemon={pokemon}
+              isSpeaking={isSpeaking}
+              setIsSpeaking={setIsSpeaking}
+            />
           </div>
         )}
       </div>
