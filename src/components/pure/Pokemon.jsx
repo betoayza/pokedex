@@ -11,13 +11,15 @@ export const Pokemon = ({ pokemon, isSpeaking, setIsSpeaking }) => {
 
   const narration = (
     <Say
-      text={`${pokemon.name}.  \nAltura: ${
-        (pokemon.height * 0.1).toFixed(2)
-      } metros. \nPeso: ${
-        (pokemon.weight * 0.1).toFixed(2)
-      } kilogramos. \nHabilidades. ${pokemon.abilities.map((ability, index) => {
-        return `\n${index + 1}) ${ability.ability.name}\n.`;
-      })}. \nMovimientos principales. ${pokemon.moves.map((move, index) => {
+      text={`${pokemon.name}.  \nAltura: ${(pokemon.height * 0.1).toFixed(
+        2
+      )} metros. \nPeso: ${(pokemon.weight * 0.1).toFixed(
+        2
+      )} kilogramos. \nHabilidades. ${pokemon.abilities.map(
+        (ability, index) => {
+          return `\n${index + 1}) ${ability.ability.name}\n.`;
+        }
+      )}. \nMovimientos principales. ${pokemon.moves.map((move, index) => {
         //console.log(index);
         if (index < 3) {
           return `\n${index + 1}) ${move.move.name}\n.`;
@@ -31,7 +33,9 @@ export const Pokemon = ({ pokemon, isSpeaking, setIsSpeaking }) => {
   );
 
   useEffect(() => {
-    setIsSpeaking(false);
+    return () => {
+      setIsSpeaking(false);
+    };
   }, []);
 
   return (
@@ -58,7 +62,7 @@ export const Pokemon = ({ pokemon, isSpeaking, setIsSpeaking }) => {
           (timeID =
             setTimeout(() => {
               setIsSpeaking(true);
-            }, 2000) && clearTimeout(timeID))
+            }, 2800) && clearTimeout(timeID))
         }
         {isSpeaking && narration}
       </div>

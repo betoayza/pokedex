@@ -49,6 +49,7 @@ export const Pokedex = () => {
 
   const handleChange = (e) => {
     setForm(e.target.value);
+    handleClick();
   };
 
   const handleChangeUserImage = (e) => {
@@ -82,7 +83,7 @@ export const Pokedex = () => {
     <Modal></Modal>
   ) : (
     <div
-      className={"border"}
+      className={"border border-dark border-3"}
       style={{ display: "grid", placeItems: "center", minHeight: "100vh" }}
     >
       <div
